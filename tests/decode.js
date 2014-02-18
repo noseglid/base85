@@ -1,6 +1,6 @@
 var _      = require('underscore');
 var base85 = require('../lib/base85');
-var data   = require('./data');
+var data   = require('./data').data;
 
 exports.testErrors = function(test)
 {
@@ -13,7 +13,8 @@ exports.testBasic = function(test)
   test.expect(data.length);
 
   _.each(data, function (tc) {
-    test.deepEqual(base85.decode(tc.enc), tc.raw);
+    var exp = typeof tc.raw === 'string' ? new Buffer(tc.raw) : tc.raw;
+    test.deepEqual(base85.decode(tc.enc), exp);
   });
 
   test.done();

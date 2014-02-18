@@ -1,6 +1,6 @@
 var _      = require('underscore');
 var base85 = require('../lib/base85');
-var data   = require('./data');
+var data   = require('./data').data;
 
 exports.testErrors = function(test)
 {
@@ -8,7 +8,7 @@ exports.testErrors = function(test)
   test.done();
 }
 
-exports.testBasic= function(test)
+exports.testBasic = function(test)
 {
   test.expect(data.length);
 
