@@ -60,7 +60,7 @@ Doesn't support the z-abbreviation as for now.
 > **data** The data to decode. May be a `String` or a [Buffer][NodeBuffer].
 > Expected to be enclosed in `<~` and `~>`.
 >
-> **returns** A [Buffer][NodeBuffer]
+> **returns** A [Buffer][NodeBuffer] With the decoded data.
 >
 
 [Base64]: http://en.wikipedia.org/wiki/Base64
