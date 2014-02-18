@@ -4,7 +4,7 @@
   "description": "Base85 (Ascii85) encode and decode functionality",
   "main": "lib/base85.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/nodeunit tests"
   },
   "devDependencies" : {
     "nodeunit" : "0.8.x",
