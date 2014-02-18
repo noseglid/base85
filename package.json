@@ -1,14 +1,14 @@
 {
   "name": "base85",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Base85 (Ascii85) encode and decode functionality",
   "main": "lib/base85.js",
   "scripts": {
     "test": "./node_modules/.bin/nodeunit tests"
   },
-  "devDependencies" : {
-    "nodeunit" : "0.8.x",
-    "underscore" : "1.6.x"
+  "devDependencies": {
+    "nodeunit": "0.8.x",
+    "underscore": "1.6.x"
   },
   "repository": {
     "type": "git",
