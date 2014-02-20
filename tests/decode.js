@@ -5,6 +5,8 @@ var data   = require('./data').data;
 exports.testErrors = function(test)
 {
   test.equal(base85.decode(1234), false)
+  test.equal(base85.decode('<~u~>'), false);
+  test.equal(base85.decode('<~uuuuu~>'), false);
   test.done();
 }
 
