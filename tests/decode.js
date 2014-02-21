@@ -21,3 +21,13 @@ exports.testBasic = function(test)
 
   test.done();
 }
+
+exports.testWhiteSpace = function(test)
+{
+  test.deepEqual(base85.decode("<~\n@p\ns7\ntD.3~>"), new Buffer('canumb'));
+  test.deepEqual(base85.decode("<~\n @  p \ns7 \n t D .3~>"), new Buffer('canumb'));
+  test.deepEqual(base85.decode("<~\n @  p \ns7 \n t D .3            ~>"), new Buffer('canumb'));
+  test.deepEqual(base85.decode("<~@ps7tD.3        \n    ~>"), new Buffer('canumb'));
+  test.deepEqual(base85.decode("<~       @ps7tD.3     \n     ~>"), new Buffer('canumb'));
+  test.done();
+}
