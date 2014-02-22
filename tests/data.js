@@ -46,5 +46,9 @@ exports.data = [
   {
     'raw' : new Buffer(' '),
     'enc' : '<~+9~>'
+  },
+  {
+    'raw' : new Buffer([0x0, 0x0, 0x0, 0x0]),
+    'enc' : '<~!!!!!~>'
   }
 ];
