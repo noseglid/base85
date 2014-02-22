@@ -19,28 +19,30 @@ applications.
 For encoding:
 
     var base85 = require('base85');
-    console.log(base85.encode('Hello, world!'));
-
-Output: `<~87cURD_*#TDfTZ)+T~>`
+    console.log(base85.encode('Hello, world!')); // '<~87cURD_*#TDfTZ)+T~>'
 
 For decoding:
 
     var base85 = require('base85');
     var decoded = base85.decode('<~@;Ka&GAhM;+CT.u+Du*?E,8s.+DkP&ATJu/@:O\'q@3B*\'Cht5\'Dg;~>');
-    console.log(decoded.toString('ascii'));
-
-Output: `all work and no play makes jack a dull boy`
+    console.log(decoded.toString('ascii')); // 'all work and no play makes jack a dull boy'
 
 ## Bugs
 
-Doesn't support the z-abbreviation as for now.
+Doesn't support the z-abbreviation for now. This means that data encoded with this
+support will cause the library to return false. An all-zero input buffer will be encoded
+as `<~!!!!!~>`, rather than `<~z~>`
+
+Doesn't support any other specification than Ascii85 for now.
+Support for [ZeroMQ Encoding][Base85ZeroMQ] and [IPv6 encoding][Base85IPv6] is in
+scope for this project.
 
 ## API
 
 ### `encode(data)`
 
 > _Encodes the specified data. The encoded data will be prepended
-> with `<~` and appended with  `~>`. This is actually following Adobes version
+> with `<~` and appended with  `~>`. This is actually following Adobes version (Ascii85)
 > which seems to be the common practice for base85._
 >
 > **data** The data to encode, may be a `String` or a [Buffer][NodeBuffer].
@@ -60,11 +62,13 @@ Doesn't support the z-abbreviation as for now.
 > **data** The data to decode. May be a `String` or a [Buffer][NodeBuffer].
 > Expected to be enclosed in `<~` and `~>`.
 >
-> **returns** A [Buffer][NodeBuffer] With the decoded data.
+> **returns** A [Buffer][NodeBuffer] With the decoded data, or **boolean** `false` if the buffer could not be decoded. When testing if the result succeeded, [always use operators with 3 characters][JSCompare] ('===' or '!===').
 >
 
 [Base64]: http://en.wikipedia.org/wiki/Base64
 [Base85]: http://en.wikipedia.org/wiki/Ascii85
 [NodeBuffer]: http://nodejs.org/api/buffer.html
 [NodeBufferToString]: http://nodejs.org/api/buffer.html#buffer_buf_tostring_encoding_start_end
-
+[Base85ZeroMQ]: http://rfc.zeromq.org/spec:32
+[Base85IPv6]: http://tools.ietf.org/html/rfc1924
+[JSCompare]: http://stackoverflow.com/questions/359494/does-it-matter-which-equals-operator-vs-i-use-in-javascript-comparisons
