@@ -35,7 +35,7 @@ as `<~!!!!!~>`, rather than `<~z~>`
 
 Doesn't support any other specification than Ascii85 for now.
 Support for [ZeroMQ Encoding][Base85ZeroMQ] and [IPv6 encoding][Base85IPv6] is in
-scope for this project.
+scope for this project, and should be implemented shortly.
 
 ## API
 
