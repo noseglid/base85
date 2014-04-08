@@ -5,9 +5,15 @@
 Simple utility to manage base85. Where [base64 adds approximately 1/3][Base64],
 [base85 only adds about 1/4][Base85]. Of course there's a tradeoff. The Base85
 alphabet includes characters that might not be as friendly as the base64 alphabet.
-While it's still only printable characters (ASCII 33 '!' to ASCII 117 'u'), it contains
-quotes, both ' and " and other characters which might appear problematic in some
-applications.
+While it's still only printable characters, the [Ascii85][Base85] specification contains
+quotes (`'` and `"`) which needs escaping in many programming languages,
+and the [ZeroMQ][Base85ZeroMQ] specification contains `<` and `>` which need escaping
+in most (all?) [SGML][SGML] languages.
+
+Supported encoding specifications
+
+  * [Ascii85][Base85]
+  * [ZeroMQ][Base85ZeroMQ]
 
 ## Installation
 
@@ -19,41 +25,47 @@ applications.
 For encoding:
 
     var base85 = require('base85');
-    console.log(base85.encode('Hello, world!')); // '<~87cURD_*#TDfTZ)+T~>'
+    console.log(base85.encode('Hello, world!')); // 'nm=QNz.92Pz/PV8aP'
+    console.log(base85.encode('Hello, world!', 'ascii85')); // ' <~87cURD_*#TDfTZ)+T~>'
 
 For decoding:
 
     var base85 = require('base85');
-    var decoded = base85.decode('<~@;Ka&GAhM;+CT.u+Du*?E,8s.+DkP&ATJu/@:O\'q@3B*\'Cht5\'Dg;~>');
-    console.log(decoded.toString('ascii')); // 'all work and no play makes jack a dull boy'
+    var decoded = base85.decode('vqG:5Cw?IqayPd#az#9uAbn%daz>L5wPF#evpK6}vix96y?$k6z*q');
+    console.log(decoded.toString('utf8')); // 'all work and no play makes jack a dull boy'
 
 ## Bugs
 
-Doesn't support the z-abbreviation for now. This means that data encoded with this
+Doesn't support the z-abbreviation for [Ascii85][Base85]. This means that data encoded with this
 support will cause the library to return false. An all-zero input buffer will be encoded
 as `<~!!!!!~>`, rather than `<~z~>`
 
-Doesn't support any other specification than Ascii85 for now.
-Support for [ZeroMQ Encoding][Base85ZeroMQ] and [IPv6 encoding][Base85IPv6] is in
-scope for this project, and should be implemented shortly.
+Doesn't support [IPv6 encoding specification (RFC1924)][Base85IPv6] for now. This baby requires
+requires 128-bit arithmetic, which is rather problematic. I'm thrilled to see that the author
+of the RFC took this in consideration, specifically - quote from the [RFC][Base85IPv6]: "This is not
+considered a serious drawback in the representation, but a flaw of the processor designs."
+Silly processor designers.
 
 ## API
 
-### `encode(data)`
+### `encode(data[, encoding])`
 
-> _Encodes the specified data. The encoded data will be prepended
-> with `<~` and appended with  `~>`. This is actually following Adobes version (Ascii85)
-> which seems to be the common practice for base85._
+> _Encodes the specified data. If encoding is `ascii85`, the encoded data will be prepended
+> with `<~` and appended with  `~>`._
 >
 > **data** The data to encode, may be a `String` or a [Buffer][NodeBuffer].
 >
+> **encoding** Which specification to use when encoding `data`.  May be either
+>              `ascii85` ([Adobe][Base85]) or `z85` ([ZeroMQ][Base85ZeroMQ]).
+>              Default is `z85`.
+>
 > **returns** A `String` with the encoded data.
 
-### `decode(data)`
+### `decode(data[, encoding])`
 
-> _Decodes the specified data. The data is expected to start with `<~` and
-> and end with `~>`. No checks are actually made for this, but output will
-> be unexpected if this is not the case._
+> _Decodes the specified data. If encoding is `ascii85`, the data is expected
+> to start with `<~` and and end with `~>`. No checks are actually made for
+> this, but output will be unexpected if this is not the case._
 >
 > _A buffer is always returned as data may not be representable in a string.
 > If you know it is, you can easily convert it to a string using the
@@ -61,6 +73,10 @@ scope for this project, and should be implemented shortly.
 >
 > **data** The data to decode. May be a `String` or a [Buffer][NodeBuffer].
 > Expected to be enclosed in `<~` and `~>`.
+>
+> **encoding** Which specification `data` is encoded with. May be either
+>              `ascii85` ([Adobe][Base85]) or `z85` ([ZeroMQ][Base85ZeroMQ]).
+>              Default is `z85`.
 >
 > **returns** A [Buffer][NodeBuffer] With the decoded data, or **boolean** `false` if the buffer could not be decoded. When testing if the result succeeded, [always use operators with 3 characters][JSCompare] ('===' or '!===').
 >
@@ -72,3 +88,4 @@ scope for this project, and should be implemented shortly.
 [Base85ZeroMQ]: http://rfc.zeromq.org/spec:32
 [Base85IPv6]: http://tools.ietf.org/html/rfc1924
 [JSCompare]: http://stackoverflow.com/questions/359494/does-it-matter-which-equals-operator-vs-i-use-in-javascript-comparisons
+[SGML]: https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language

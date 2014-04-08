@@ -4,16 +4,19 @@ var data   = require('./data').data;
 
 exports.testErrors = function(test)
 {
-  test.equal(base85.encode(1234), false);
+  test.equal(base85.encode(1234, 'ascii85'), false);
   test.done();
 }
 
 exports.testBasic = function(test)
 {
-  test.expect(data.length);
+  var encodings = [ 'ascii85', 'z85' ];
+  test.expect(data.length * encodings.length);
 
-  _.each(data, function (tc) {
-    test.equal(base85.encode(tc.raw), tc.enc);
+  _.each(encodings, function(encoding) {
+    _.each(data, function (tc) {
+      test.equal(base85.encode(tc.raw, encoding), tc.enc[encoding]);
+    });
   });
 
   test.done();
