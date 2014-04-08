@@ -4,11 +4,12 @@
   "description": "Base85 (Ascii85) encode and decode functionality",
   "main": "lib/base85.js",
   "scripts": {
-    "test": "./node_modules/.bin/nodeunit tests"
+    "test": "./node_modules/.bin/jshint . && ./node_modules/.bin/nodeunit tests"
   },
   "devDependencies": {
     "nodeunit": "0.8.x",
-    "underscore": "1.6.x"
+    "underscore": "1.6.x",
+    "jshint": "2.5.x"
   },
   "repository": {
     "type": "git",

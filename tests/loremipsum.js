@@ -1,3 +1,5 @@
+'use strict';
+
 var base85 = require('../lib/base85');
 var fs     = require('fs');
 
@@ -12,7 +14,7 @@ module.exports.ascii85 = function(test)
   test.deepEqual(decoded, raw);
   test.deepEqual(encoded, enc.toString('ascii'));
   test.done();
-}
+};
 
 module.exports.z85 = function(test)
 {
@@ -25,5 +27,4 @@ module.exports.z85 = function(test)
   test.deepEqual(decoded, raw);
   test.deepEqual(encoded, enc.toString('ascii'));
   test.done();
-}
-
+};
