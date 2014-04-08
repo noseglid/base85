@@ -78,7 +78,7 @@ Silly processor designers.
 >              `ascii85` ([Adobe][Base85]) or `z85` ([ZeroMQ][Base85ZeroMQ]).
 >              Default is `z85`.
 >
-> **returns** A [Buffer][NodeBuffer] With the decoded data, or **boolean** `false` if the buffer could not be decoded. When testing if the result succeeded, [always use operators with 3 characters][JSCompare] ('===' or '!===').
+> **returns** A [Buffer][NodeBuffer] With the decoded data, or **boolean** `false` if the buffer could not be decoded. When testing if the result succeeded, [always use operators with 3 characters][JSCompare] ('===' or '!==').
 >
 
 [Base64]: http://en.wikipedia.org/wiki/Base64
