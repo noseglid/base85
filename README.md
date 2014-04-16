@@ -27,21 +27,26 @@ Supported encoding specifications
 For encoding:
 
     var base85 = require('base85');
-    console.log(base85.encode('Hello, world!')); // 'nm=QNz.92Pz/PV8aP'
-    console.log(base85.encode('Hello, world!', 'ascii85')); // ' <~87cURD_*#TDfTZ)+T~>'
+
+    var z85 = base85.encode('Hello, world!');
+    console.log(z85); // nm=QNz.92Pz/PV8aP
+
+    var ascii85 = base85.encode('Hello, world!', 'ascii85');
+    console.log(ascii85); // <~87cURD_*#TDfTZ)+T~>
 
 For decoding:
 
     var base85 = require('base85');
+
     var decoded = base85.decode('vqG:5Cw?IqayPd#az#9uAbn%daz>L5wPF#evpK6}vix96y?$k6z*q');
     console.log(decoded.toString('utf8')); // 'all work and no play makes jack a dull boy'
 
 ## API
 
-### `encode(data[, encoding])`
+### `encode(data [, encoding])`
 
-> _Encodes the specified data. If encoding is `ascii85`, the encoded data will be prepended
-> with `<~` and appended with  `~>`._
+> Encodes the specified data. If encoding is `ascii85`, the encoded data will be prepended
+> with `<~` and appended with  `~>`.
 >
 > **data** The data to encode, may be a `String` or a [Buffer][NodeBuffer].
 >
@@ -51,15 +56,15 @@ For decoding:
 >
 > **returns** A `String` with the encoded data.
 
-### `decode(data[, encoding])`
+### `decode(data [, encoding])`
 
-> _Decodes the specified data. If encoding is `ascii85`, the data is expected
+> Decodes the specified data. If encoding is `ascii85`, the data is expected
 > to start with `<~` and and end with `~>`. No checks are actually made for
-> this, but output will be unexpected if this is not the case._
+> this, but output will be unexpected if this is not the case.
 >
-> _A buffer is always returned as data may not be representable in a string.
+> A buffer is always returned as data may not be representable in a string.
 > If you know it is, you can easily convert it to a string using the
-> [Buffer.toString()][NodeBufferToString] utility._
+> [Buffer.toString()][NodeBufferToString] utility.
 >
 > **data** The data to decode. May be a `String` or a [Buffer][NodeBuffer].
 > Expected to be enclosed in `<~` and `~>`.
