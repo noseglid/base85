@@ -4,7 +4,7 @@
 
 Base85 encoder/decoder written in native javascript.
 
-Where [base64 adds approximately 1/3][Base64], [base85 only adds about
+Where base64 [adds approximately 1/3][Base64], base85 only [adds about
 1/4][Base85]. Of course there's a tradeoff. The Base85 alphabet includes
 characters that might not be as friendly as the base64 alphabet.  While it's
 still only printable characters, the [Ascii85][Base85] specification contains
@@ -12,10 +12,14 @@ quotes (`'` and `"`) which needs escaping in many programming languages, and
 the [ZeroMQ][Base85ZeroMQ] specification contains `<` and `>` which need
 escaping in most (all?) [SGML][SGML] languages.
 
+IPv6 encoding should only be used for encoding IPv6 addresses. When using IPv6,
+input for encoding must always be 16 bytes, and input for decoding must always be 20 bytes.
+
 Supported encoding specifications
 
   * [Ascii85][Base85]
   * [ZeroMQ][Base85ZeroMQ]
+  * [IPv6][Base85IPv6]
 
 ## Installation
 
@@ -24,22 +28,29 @@ Supported encoding specifications
 
 ## Usage
 
-For encoding:
+### Encoding:
 
     var base85 = require('base85');
 
     var z85 = base85.encode('Hello, world!');
     console.log(z85); // nm=QNz.92Pz/PV8aP
 
-    var ascii85 = base85.encode('Hello, world!', 'ascii85');
-    console.log(ascii85); // <~87cURD_*#TDfTZ)+T~>
-
-For decoding:
+### Decoding:
 
     var base85 = require('base85');
 
     var decoded = base85.decode('vqG:5Cw?IqayPd#az#9uAbn%daz>L5wPF#evpK6}vix96y?$k6z*q');
-    console.log(decoded.toString('utf8')); // 'all work and no play makes jack a dull boy'
+    console.log(decoded.toString('utf8')); // all work and no play makes jack a dull boy
+
+### IPv6 ([RFC1924][Base85IPv6]), can take [any correctly formatted IPv6 address](http://en.wikipedia.org/wiki/IPv6):
+
+    var base85 = require('base85');
+
+    var ipv6 = base85.encode('2001:db8:100:f101::1', 'ipv6');
+    console.log(ipv6); // 9R}vSQZ1W=8fRv3*HAqn
+
+    var decoded = base85.decode('9R}vSQZ1W=8fRv3*HAqn', 'ipv6');
+    console.log(decoded); // 2001:db8:100:f101::1
 
 ## API
 
@@ -48,32 +59,45 @@ For decoding:
 > Encodes the specified data. If encoding is `ascii85`, the encoded data will be prepended
 > with `<~` and appended with  `~>`.
 >
-> **data** The data to encode, may be a `String` or a [Buffer][NodeBuffer].
+> **data**
+>> The data to encode, may be a `String` or a [Buffer][NodeBuffer].
 >
-> **encoding** Which specification to use when encoding `data`.  May be either
->              `ascii85` ([Adobe][Base85]) or `z85` ([ZeroMQ][Base85ZeroMQ]).
->              Default is `z85`.
+> **encoding**
+>> Which specification to use when encoding `data`. Valid values are:
+>> `ascii85`, `z85` or `ipv6`. Default is `z85`.
+>>
+>> For `ipv6`, if `data` is a buffer, it is expected to be the binary representation
+>> of an IPv6 address (16 bytes). It **cannot** be a textual representation. If it is a string,
+>> it can be on any valid IPv6 form (e.g. `::1` or `1080:0:0:0:8:800:200c:417a`,
+>> parsing is done using [javascript-ipv6][JavaScriptIPv6]).
 >
-> **returns** A `String` with the encoded data.
+> **returns**
+>> A `String` with the encoded data.
 
 ### `decode(data [, encoding])`
 
 > Decodes the specified data. If encoding is `ascii85`, the data is expected
 > to start with `<~` and and end with `~>`. No checks are actually made for
-> this, but output will be unexpected if this is not the case.
+> this, but output will be unexpected if this is not the case. If encoding is
+> `ipv6`, the length of data must be exactly 20 bytes. `ipv6` encoding cannot
+> be used with arbitrary data.
 >
 > A buffer is always returned as data may not be representable in a string.
 > If you know it is, you can easily convert it to a string using the
 > [Buffer.toString()][NodeBufferToString] utility.
 >
-> **data** The data to decode. May be a `String` or a [Buffer][NodeBuffer].
-> Expected to be enclosed in `<~` and `~>`.
+> **data**
+>> The data to decode. May be a `String` or a [Buffer][NodeBuffer].
+>> Expected to be enclosed in `<~` and `~>`.
 >
-> **encoding** Which specification `data` is encoded with. May be either
->              `ascii85` ([Adobe][Base85]) or `z85` ([ZeroMQ][Base85ZeroMQ]).
->              Default is `z85`.
+> **encoding**
+>> Which specification `data` is encoded with. Valid values are:
+>> `ascii85`, `z85` or `ipv6`. Default is `z85`.
 >
-> **returns** A [Buffer][NodeBuffer] With the decoded data, or **boolean** `false` if the buffer could not be decoded. When testing if the result succeeded, [always use operators with 3 characters][JSCompare] ('===' or '!==').
+> **returns**
+>> A [Buffer][NodeBuffer] With the decoded data, or **boolean** `false`
+>> if the buffer could not be decoded. When testing if the result succeeded,
+>> [always use operators with 3 characters][JSCompare] ('===' or '!==').
 >
 
 ## Which specification to use?
@@ -84,7 +108,7 @@ include quotes in its alphabet which makes it useful in many quoted languages
 Neither does it add the 4 extra enclosing bytes Ascii85 does.  There may,
 however, be some problems using it in SGML and its derivatives since
 both less-than `<` and greater-than `>` are part of the alphabet. But
-then again, Ascii85 has that aswell.
+then again, Ascii85 has that as well.
 
 Ascii85 appears to be the most used of the base85 specifications however. As for why
 completely eludes me. This may very well be the only reason to pick Ascii85.
@@ -93,17 +117,21 @@ If you control both decoding and encoding side, use ZeroMQ.
 
 If you need interoperability with Ascii85, use that.
 
+As IPv6 encoding only supports exactly 128 bits (16 bytes), this is not very useful for
+arbitrary data. Only use IPv6 if you're actually encoding IPv6 addresses.
+
 ## Bugs
 
 Doesn't support the z-abbreviation for [Ascii85][Base85]. This means that data encoded with this
 support will cause the library to return false. An all-zero input buffer will be encoded
 as `<~!!!!!~>`, rather than `<~z~>`
 
-Doesn't support [IPv6 encoding specification (RFC1924)][Base85IPv6] for now. This baby
-requires 128-bit arithmetic, which is rather problematic. I'm thrilled to see that the author
-of the RFC took this in consideration, specifically - quote from the [RFC][Base85IPv6]: "This is not
+[IPv6 encoding specification (RFC1924)][Base85IPv6] requires 128-bit arithmetic,
+which is rather problematic. I'm thrilled to see that the author of the RFC took this
+in consideration, specifically - quote from the [RFC][Base85IPv6]: "This is not
 considered a serious drawback in the representation, but a flaw of the processor designs."
-Silly processor designers.
+Silly processor designers. Currently, this is implemented using an arbitrary precision algorithm,
+it's slow but it does the job. Now let's poke those processor designers for 128-bit processors.
 
 [Base64]: http://en.wikipedia.org/wiki/Base64
 [Base85]: http://en.wikipedia.org/wiki/Ascii85
@@ -113,3 +141,4 @@ Silly processor designers.
 [Base85IPv6]: http://tools.ietf.org/html/rfc1924
 [JSCompare]: http://stackoverflow.com/questions/359494/does-it-matter-which-equals-operator-vs-i-use-in-javascript-comparisons
 [SGML]: https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language
+[JavaScriptIPv6]: https://github.com/beaugunderson/javascript-ipv6

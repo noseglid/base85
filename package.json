@@ -6,6 +6,10 @@
   "scripts": {
     "test": "./node_modules/.bin/jshint . && ./node_modules/.bin/nodeunit tests"
   },
+  "dependencies" : {
+    "bignum": "0.6.x",
+    "ipv6": "3.1.x"
+  },
   "devDependencies": {
     "nodeunit": "0.8.x",
     "underscore": "1.6.x",
