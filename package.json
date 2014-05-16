@@ -1,6 +1,6 @@
 {
   "name": "base85",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Base85 (Ascii85) encode and decode functionality",
   "main": "lib/base85.js",
   "scripts": {
