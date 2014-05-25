@@ -12,9 +12,9 @@
     "underscore": "^1.6.0"
   },
   "devDependencies": {
-    "nodeunit": "0.8.x",
-    "underscore": "1.6.x",
-    "jshint": "2.5.x"
+    "nodeunit": "^0.9.0",
+    "underscore": "^1.6.0",
+    "jshint": "^2.5.1"
   },
   "repository": {
     "type": "git",
