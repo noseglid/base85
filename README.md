@@ -88,7 +88,7 @@ Supported encoding specifications
 >
 > **data**
 >> The data to decode. May be a `String` or a [Buffer][NodeBuffer].
->> Expected to be enclosed in `<~` and `~>`.
+>> If `ascii85`, it is expected to be enclosed in `<~` and `~>`.
 >
 > **encoding**
 >> Which specification `data` is encoded with. Valid values are:
