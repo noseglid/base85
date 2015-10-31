@@ -9,22 +9,19 @@ exports.data = [
   {
     'raw' : new Buffer('Man a', 'ascii'),
     'enc' : {
-      'ascii85' : '<~9jqo^@/~>',
-      'z85': 'o<}]Zve'
+      'ascii85' : '<~9jqo^@/~>'
     }
   },
   {
     'raw' : new Buffer('Man ab', 'ascii'),
     'enc' : {
-      'ascii85' : '<~9jqo^@:B~>',
-      'z85': 'o<}]Zvpx',
+      'ascii85' : '<~9jqo^@:B~>'
     }
   },
   {
     'raw' : new Buffer('Man abc', 'ascii'),
     'enc' : {
-      'ascii85' : '<~9jqo^@:E^~>',
-      'z85' : 'o<}]ZvpAZ'
+      'ascii85' : '<~9jqo^@:E^~>'
     }
   },
   {
@@ -72,8 +69,7 @@ exports.data = [
   {
     'raw' : new Buffer([0xff]),
     'enc' : {
-      'ascii85' : '<~rr~>',
-      'z85' : '@@'
+      'ascii85' : '<~rr~>'
     }
   },
   {
@@ -86,8 +82,7 @@ exports.data = [
   {
     'raw' : new Buffer(' '),
     'enc' : {
-      'ascii85' : '<~+9~>',
-      'z85': 'ao'
+      'ascii85' : '<~+9~>'
     }
   },
   {

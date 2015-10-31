@@ -13,11 +13,13 @@ exports.testErrors = function(test)
 exports.testBasic = function(test)
 {
   var encodings = [ 'ascii85', 'z85' ];
-  test.expect(data.length * encodings.length);
+  test.expect(22);
 
   _.each(encodings, function(encoding) {
     _.each(data, function (tc) {
-      test.equal(base85.encode(tc.raw, encoding), tc.enc[encoding]);
+      if (tc.enc[encoding]) {
+        test.equal(base85.encode(tc.raw, encoding), tc.enc[encoding]);
+      }
     });
   });
 
