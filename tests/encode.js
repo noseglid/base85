@@ -7,6 +7,8 @@ var data   = require('./data').data;
 exports.testErrors = function(test)
 {
   test.equal(base85.encode(1234, 'ascii85'), false);
+  test.equal(base85.encode(new Buffer([0x0, 0x0, 0x0])), false);
+  test.equal(base85.encode(new Buffer([0x0, 0x0, 0x0, 0x0, 0x0])), false);
   test.done();
 };
 
