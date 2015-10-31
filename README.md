@@ -32,15 +32,15 @@ Supported encoding specifications
 
     var base85 = require('base85');
 
-    var z85 = base85.encode('Hello, world!');
-    console.log(z85); // nm=QNz.92Pz/PV8aP
+    var z85 = base85.encode('Hello, world!!!!');
+    console.log(z85); // nm=QNz.92Pz/PV8aT50L
 
 ### Decoding:
 
     var base85 = require('base85');
 
-    var decoded = base85.decode('vqG:5Cw?IqayPd#az#9uAbn%daz>L5wPF#evpK6}vix96y?$k6z*q');
-    console.log(decoded.toString('utf8')); // all work and no play makes jack a dull boy
+    var decoded = base85.decode('vqG:5Cw?IqayPd#az#9uAbn%daz>L5wPF#evpK6}vix96y?$k6z*rGH');
+    console.log(decoded.toString('utf8')); // all work and no play makes jack a dull boy!!
 
 ### IPv6 ([RFC1924][Base85IPv6]), can take [any correctly formatted IPv6 address](http://en.wikipedia.org/wiki/IPv6):
 
