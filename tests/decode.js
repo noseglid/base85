@@ -12,6 +12,10 @@ exports.testErrors = function(test)
   test.equal(base85.decode('a'), false);
   test.equal(base85.decode('asdf'), false);
   test.equal(base85.decode('asdfgh'), false);
+  test.equal(base85.decode('as fg'), false);
+  test.equal(base85.decode('     '), false);
+  test.equal(base85.decode('      '), false);
+  test.equal(base85.decode('as\nfg'), false);
   test.done();
 };
 
