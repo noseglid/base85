@@ -88,7 +88,7 @@ exports.data = [
   {
     'raw' : new Buffer([0x0, 0x0, 0x0, 0x0]),
     'enc' : {
-      'ascii85' : '<~!!!!!~>',
+      'ascii85' : '<~z~>',
       'z85' : '00000'
     }
   },
