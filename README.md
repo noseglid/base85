@@ -72,7 +72,7 @@ Supported encoding specifications
 >> For `ipv6`, if `data` is a buffer, it is expected to be the binary representation
 >> of an IPv6 address (16 bytes). It **cannot** be a textual representation. If it is a string,
 >> it can be on any valid IPv6 form (e.g. `::1` or `1080:0:0:0:8:800:200c:417a`,
->> parsing is done using [javascript-ipv6][JavaScriptIPv6]).
+>> parsing is done using [ip-address][IPAddress]).
 >
 > **returns**
 >> A `String` with the encoded data.
@@ -144,4 +144,4 @@ it's slow but it does the job. Now let's poke those processor designers for 128-
 [Base85IPv6]: http://tools.ietf.org/html/rfc1924
 [JSCompare]: http://stackoverflow.com/questions/359494/does-it-matter-which-equals-operator-vs-i-use-in-javascript-comparisons
 [SGML]: https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language
-[JavaScriptIPv6]: https://github.com/beaugunderson/javascript-ipv6
+[IPAddress]: https://www.npmjs.com/package/ip-address

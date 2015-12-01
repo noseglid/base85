@@ -1,3 +1,5 @@
+'use strict';
+
 exports.data = [
   {
     'raw' : new Buffer('Man ', 'ascii'),
