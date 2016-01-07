@@ -125,10 +125,6 @@ arbitrary data. Only use IPv6 if you're actually encoding IPv6 addresses.
 
 ## Bugs
 
-Doesn't support the z-abbreviation for [Ascii85][Base85]. This means that data encoded with this
-support will cause the library to return false. An all-zero input buffer will be encoded
-as `<~!!!!!~>`, rather than `<~z~>`
-
 [IPv6 encoding specification (RFC1924)][Base85IPv6] requires 128-bit arithmetic,
 which is rather problematic. I'm thrilled to see that the author of the RFC took this
 in consideration, specifically - quote from the [RFC][Base85IPv6]: "This is not
