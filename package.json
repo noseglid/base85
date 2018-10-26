@@ -1,19 +1,19 @@
 {
   "name": "base85",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Base85 (Ascii85) encode and decode functionality",
   "main": "lib/base85.js",
   "scripts": {
     "test": "jshint . && nodeunit tests"
   },
   "dependencies": {
-    "bignum": "^0.11.0",
-    "ip-address": "^5.0.2",
-    "underscore": "^1.6.0"
+    "bignum": "^0.13.0",
+    "ip-address": "^5.8.9",
+    "underscore": "^1.9.1"
   },
   "devDependencies": {
-    "nodeunit": "^0.9.0",
-    "jshint": "^2.5.1"
+    "nodeunit": "^0.11.3",
+    "jshint": "^2.9.6"
   },
   "repository": {
     "type": "git",
