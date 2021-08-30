@@ -2,54 +2,53 @@
 
 exports.data = [
   {
-    'raw' : new Buffer('Man ', 'ascii'),
+    'raw' : Buffer.from('Man ', 'ascii'),
     'enc' : {
       'ascii85' : '<~9jqo^~>',
       'z85' : 'o<}]Z'
     }
   },
   {
-    'raw' : new Buffer('Man a', 'ascii'),
+    'raw' : Buffer.from('Man a', 'ascii'),
     'enc' : {
       'ascii85' : '<~9jqo^@/~>'
     }
   },
   {
-    'raw' : new Buffer('Man ab', 'ascii'),
+    'raw' : Buffer.from('Man ab', 'ascii'),
     'enc' : {
       'ascii85' : '<~9jqo^@:B~>'
     }
   },
   {
-    'raw' : new Buffer('Man abc', 'ascii'),
+    'raw' : Buffer.from('Man abc', 'ascii'),
     'enc' : {
       'ascii85' : '<~9jqo^@:E^~>'
     }
   },
   {
-    'raw' : new Buffer('Man abcd', 'ascii'),
+    'raw' : Buffer.from('Man abcd', 'ascii'),
     'enc'  : {
       'ascii85' : '<~9jqo^@:E_W~>',
       'z85' : 'o<}]ZvpA.S'
     }
   },
   {
-    'raw' : new Buffer('Hello, world!!!!', 'ascii'),
+    'raw' : Buffer.from('Hello, world!!!!', 'ascii'),
     'enc' : {
       'ascii85' : '<~87cURD_*#TDfTZ)+X&!P~>',
       'z85' : 'nm=QNz.92Pz/PV8aT50L'
     }
   },
   {
-    'raw' : new Buffer('', 'ascii'),
+    'raw' : Buffer.from('', 'ascii'),
     'enc' : {
       'ascii85' : '<~~>',
       'z85' : ''
     }
   },
   {
-    'raw' : new Buffer(
-      'Man is distinguished, not only by his reason, but by this singular passion ' +
+    'raw' : Buffer.from('Man is distinguished, not only by his reason, but by this singular passion ' +
       'from other animals, which is a lust of the mind, that by a perseverance of ' +
       'delight in the continued and indefatigable generation of knowledge, exceeds ' +
       'the short vehemence of any carnal pleasure',
@@ -69,40 +68,40 @@ exports.data = [
     }
   },
   {
-    'raw' : new Buffer([0xff]),
+    'raw' : Buffer.from([0xff]),
     'enc' : {
       'ascii85' : '<~rr~>'
     }
   },
   {
-    'raw' : new Buffer([0xff, 0xff, 0xff, 0xff]),
+    'raw' : Buffer.from([0xff, 0xff, 0xff, 0xff]),
     'enc' : {
       'ascii85' : '<~s8W-!~>',
       'z85': '%nSc0'
     }
   },
   {
-    'raw' : new Buffer(' '),
+    'raw' : Buffer.from(' '),
     'enc' : {
       'ascii85' : '<~+9~>'
     }
   },
   {
-    'raw' : new Buffer([0x0, 0x0, 0x0, 0x0]),
+    'raw' : Buffer.from([0x0, 0x0, 0x0, 0x0]),
     'enc' : {
       'ascii85' : '<~z~>',
       'z85' : '00000'
     }
   },
   {
-    'raw' : new Buffer([0x86, 0x4F, 0xD2, 0x6F, 0xB5, 0x59, 0xF7, 0x5B]),
+    'raw' : Buffer.from([0x86, 0x4F, 0xD2, 0x6F, 0xB5, 0x59, 0xF7, 0x5B]),
     'enc' : {
       'ascii85' : '<~L/669[9<6.~>',
       'z85' : 'HelloWorld'
     }
   },
   {
-    'raw' : new Buffer([0x8E, 0x0B, 0xDD, 0x69, 0x76, 0x28, 0xB9, 0x1D, 0x8F, 0x24, 0x55,
+    'raw' : Buffer.from([0x8E, 0x0B, 0xDD, 0x69, 0x76, 0x28, 0xB9, 0x1D, 0x8F, 0x24, 0x55,
                         0x87, 0xEE, 0x95, 0xC5, 0xB0, 0x4D, 0x48, 0x96, 0x3F, 0x79, 0x25,
                         0x98, 0x77, 0xB4, 0x9C, 0xD9, 0x06, 0x3A, 0xEA, 0xD3, 0xB7]),
     'enc' : {

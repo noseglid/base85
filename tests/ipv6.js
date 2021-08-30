@@ -1,21 +1,21 @@
 'use strict';
 
-var base85 = require('../lib/base85');
+const base85 = require('../lib/base85');
 
 exports.testErrors = function(test)
 {
   test.equal(base85.encode('asdf', 'ipv6'), false);
   test.equal(base85.encode('0:0:0:0:0:0:0:0:0', 'ipv6'), false); /* 9 groups */
-  test.equal(base85.encode(new Buffer(17), 'ipv6'), false); /* Oops. Too large */
-  test.equal(base85.encode(new Buffer(15), 'ipv6'), false); /* Oops. Too small */
-  test.equal(base85.encode(new Buffer(20), 'ipv6'), false); /* Oops. Too large */
+  test.equal(base85.encode(Buffer.alloc(17), 'ipv6'), false); /* Oops. Too large */
+  test.equal(base85.encode(Buffer.alloc(15), 'ipv6'), false); /* Oops. Too small */
+  test.equal(base85.encode(Buffer.alloc(20), 'ipv6'), false); /* Oops. Too large */
 
   test.equal(base85.decode('asdf', 'ipv6'), false);
   test.equal(base85.decode('aaaaaaaaaaaaaaaaaaaaa', 'ipv6'), false); /* 21 chars */
   test.equal(base85.decode('aaaaaaaaaaaaaaa', 'ipv6'), false); /* 16 chars */
-  test.equal(base85.decode(new Buffer(16), 'ipv6'), false);
-  test.equal(base85.decode(new Buffer(19), 'ipv6'), false);
-  test.equal(base85.decode(new Buffer(21), 'ipv6'), false);
+  test.equal(base85.decode(Buffer.alloc(16), 'ipv6'), false);
+  test.equal(base85.decode(Buffer.alloc(19), 'ipv6'), false);
+  test.equal(base85.decode(Buffer.alloc(21), 'ipv6'), false);
 
   test.done();
 };
@@ -32,7 +32,7 @@ exports.testBasicEncodeString = function(test)
 
 exports.testBasicEncodeBuffer = function(test)
 {
-  var b1 = new Buffer([
+  const b1 = Buffer.from([
     0x10, 0x80, 0x00, 0x00,
     0x00, 0x00, 0x00, 0x00,
     0x00, 0x08, 0x08, 0x00,
@@ -40,7 +40,7 @@ exports.testBasicEncodeBuffer = function(test)
   ]);
   test.equal(base85.encode(b1, 'ipv6'), '4)+k&C#VzJ4br>0wv%Yp');
 
-  var b2 = new Buffer([
+  const b2 = Buffer.from([
     0xFF, 0xFF, 0xFF, 0xFF,
     0xFF, 0xFF, 0xFF, 0xFF,
     0xFF, 0xFF, 0xFF, 0xFF,
@@ -62,6 +62,6 @@ exports.testBasicDecodeString = function(test)
 
 exports.testBasicDecodeBuffer = function(test)
 {
-  test.equal(base85.decode(new Buffer('4)+k&C#VzJ4br>0wv%Yp'), 'ipv6'), '1080::8:800:200c:417a');
+  test.equal(base85.decode(Buffer.from('4)+k&C#VzJ4br>0wv%Yp'), 'ipv6'), '1080::8:800:200c:417a');
   test.done();
 };
