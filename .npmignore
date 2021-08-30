@@ -1,3 +1,6 @@
 tests
 .travis.yml
 .npmignore
+.idea
+.vscode
+.DS_STORE
