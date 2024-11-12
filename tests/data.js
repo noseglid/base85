@@ -1,5 +1,11 @@
 'use strict';
 
+var big1234 = '1234';
+big1234 = big1234.repeat(2*1000*1000);
+
+var bigBtoa = 'F)}kW';
+bigBtoa = bigBtoa.repeat(2*1000*1000);
+
 exports.data = [
   {
     'raw' : Buffer.from('Man ', 'ascii'),
@@ -136,6 +142,12 @@ exports.data = [
       'btpa' : 'jtkvsb||?Wk0e!x?v=%`O-PnMc_o;4w4B)nI_lH6',
       'ascii85' : '<~NXOZWFssmAO!I_\\mZkbq9h:R7GpSi%[%,eR3pP2\'~>',
       'z85' : 'JTKVSB%%)wK0E.X)V>+}o?pNmC{O&4W4b!Ni{Lh6'
+    }
+  },
+  {
+    'raw' : Buffer.from(big1234, 'ascii'),
+    'enc' : {
+      'btoa' : bigBtoa
     }
   }
 ];
