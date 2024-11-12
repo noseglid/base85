@@ -1,6 +1,5 @@
 'use strict';
 
-const _         = require('underscore');
 const base85    = require('../lib/base85');
 const data      = require('./data').data;
 const alphabets = require('../lib/alphabets');
@@ -17,13 +16,13 @@ exports.testBasic = function(test)
 {
   test.expect(44);
 
-  _.each(Object.keys(alphabets), function(encoding) {
-    _.each(data, function (tc) {
+  for (const encoding of Object.keys(alphabets)) {
+    for (const tc of data) {
       if (tc.enc[encoding]) {
         test.equal(base85.encode(tc.raw, encoding), tc.enc[encoding]);
       }
-    });
-  });
+    }
+  }
 
   test.done();
 };
