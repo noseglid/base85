@@ -1,8 +1,9 @@
 'use strict';
 
-const _      = require('underscore');
-const base85 = require('../lib/base85');
-const data   = require('./data').data;
+const _         = require('underscore');
+const base85    = require('../lib/base85');
+const data      = require('./data').data;
+const alphabets = require('../lib/alphabets');
 
 exports.testErrors = function(test)
 {
@@ -21,10 +22,9 @@ exports.testErrors = function(test)
 
 exports.testBasic = function(test)
 {
-  const encodings = [ 'ascii85', 'z85' ];
   test.expect(22);
 
-  _.each(encodings, function(encoding) {
+  _.each(Object.keys(alphabets), function(encoding) {
     _.each(data, function (tc) {
       if (tc.enc[encoding]) {
         const exp = typeof tc.raw === 'string' ? Buffer.from(tc.raw) : tc.raw;
