@@ -22,7 +22,7 @@ exports.testErrors = function(test)
 
 exports.testBasic = function(test)
 {
-  test.expect(22);
+  test.expect(34);
 
   _.each(Object.keys(alphabets), function(encoding) {
     _.each(data, function (tc) {
