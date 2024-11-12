@@ -15,7 +15,7 @@ exports.testErrors = function(test)
 
 exports.testBasic = function(test)
 {
-  test.expect(34);
+  test.expect(44);
 
   _.each(Object.keys(alphabets), function(encoding) {
     _.each(data, function (tc) {

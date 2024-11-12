@@ -5,7 +5,9 @@ exports.data = [
     'raw' : Buffer.from('Man ', 'ascii'),
     'enc' : {
       'btoa' : 'O<`^z',
+      'a85' : '9jqo^',
       'ascii85' : '<~9jqo^~>',
+      'z85pad' : 'o<}]Z',
       'z85' : 'o<}]Z'
     }
   },
@@ -13,6 +15,8 @@ exports.data = [
     'raw' : Buffer.from('Man a', 'ascii'),
     'enc' : {
       'btoa' : 'O<`^zVE',
+      'z85pad' : 'o<}]Zve',
+      'a85' : '9jqo^@/',
       'ascii85' : '<~9jqo^@/~>'
     }
   },
@@ -20,6 +24,8 @@ exports.data = [
     'raw' : Buffer.from('Man ab', 'ascii'),
     'enc' : {
       'btoa' : 'O<`^zVPX',
+      'z85pad' : 'o<}]Zvpx',
+      'a85' : '9jqo^@:B',
       'ascii85' : '<~9jqo^@:B~>'
     }
   },
@@ -27,6 +33,8 @@ exports.data = [
     'raw' : Buffer.from('Man abc', 'ascii'),
     'enc' : {
       'btoa' : 'O<`^zVPaz',
+      'z85pad' : 'o<}]ZvpAZ',
+      'a85' : '9jqo^@:E^',
       'ascii85' : '<~9jqo^@:E^~>'
     }
   },
@@ -35,6 +43,8 @@ exports.data = [
     'enc'  : {
       'btoa' : 'O<`^zVPa!s',
       'ascii85' : '<~9jqo^@:E_W~>',
+      'a85' : '9jqo^@:E_W',
+      'z85pad' : 'o<}]ZvpA.S',
       'z85' : 'o<}]ZvpA.S'
     }
   },
