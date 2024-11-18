@@ -17,10 +17,16 @@ input for encoding must always be 16 bytes, and input for decoding must always b
 
 ZeroMQ's version (`z85`) require [according to the specification][Base85ZeroMQ])
 string input to be divisible by 5, and binary input to be divisible by 4.
+This module includes a `z85pad` version which uses the same alphabet but
+does not enforce, or indeed require, this restriction.
+
+The `Ascii85` encoding frames the base85 string between `<~` and `~>`.
+Use the alternate `a85` version if you don't want that.
 
 Supported encoding specifications
 
   * [Ascii85][Base85]
+  * [btoa][Base85]
   * [ZeroMQ][Base85ZeroMQ]
   * [IPv6][Base85IPv6]
 
@@ -116,12 +122,14 @@ then again, Ascii85 has that as well.
 Ascii85 appears to be the most used of the base85 specifications however. As for why
 completely eludes me. This may very well be the only reason to pick Ascii85.
 
-If you control both decoding and encoding side, use ZeroMQ.
+If you control both decoding and encoding side, use ZeroMQ, or the `z85pad` version
+if your buffers may not be a multiple of 4 bytes long.
 
 If you need interoperability with Ascii85, use that.
 
 As IPv6 encoding only supports exactly 128 bits (16 bytes), this is not very useful for
 arbitrary data. Only use IPv6 if you're actually encoding IPv6 addresses.
+(Also note the issuance date of RFC 1924.)
 
 ## Bugs
 
