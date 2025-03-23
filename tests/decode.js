@@ -21,7 +21,7 @@ exports.testErrors = function(test)
 
 exports.testBasic = function(test)
 {
-  test.expect(44);
+  test.expect(45);
 
   for (const encoding of Object.keys(alphabets)) {
     for (const tc of data) {
