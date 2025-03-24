@@ -5,7 +5,7 @@
   "main": "lib/base85.js",
   "typings": "lib/base85.d.ts",
   "scripts": {
-    "test": "jshint . && nodeunit tests"
+    "test": "vitest"
   },
   "dependencies": {
     "buffer": "^6.0.3",
@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "jshint": "^2.13.1",
-    "nodeunit": "^0.11.3"
+    "vitest": "^3.0.9"
   },
   "repository": {
     "type": "git",

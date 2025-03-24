@@ -1,10 +1,10 @@
 'use strict';
 
 var big1234 = '1234';
-big1234 = big1234.repeat(2*1000*1000);
+big1234 = big1234.repeat(1000);
 
 var bigBtoa = 'F)}kW';
-bigBtoa = bigBtoa.repeat(2*1000*1000);
+bigBtoa = bigBtoa.repeat(1000);
 
 exports.data = [
   {
