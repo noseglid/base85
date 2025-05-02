@@ -5,27 +5,22 @@
   "main": "lib/base85.js",
   "typings": "lib/base85.d.ts",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest run"
   },
   "dependencies": {
     "buffer": "^6.0.3",
     "ip-address": "^5.8.9"
   },
   "devDependencies": {
-    "jshint": "^2.13.1",
+    "@biomejs/biome": "1.9.4",
+    "@types/ip-address": "^6.0.0",
     "vitest": "^3.0.9"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/noseglid/base85"
   },
-  "keywords": [
-    "base85",
-    "ascii85",
-    "encode",
-    "decode",
-    "binary-to-text"
-  ],
+  "keywords": ["base85", "ascii85", "encode", "decode", "binary-to-text"],
   "author": "Alexander Olsson <noseglid@gmail.com>",
   "license": "MIT",
   "bugs": {
