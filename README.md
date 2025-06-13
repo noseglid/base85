@@ -73,7 +73,7 @@ Supported encoding specifications
 >
 > **encoding**
 >> Which specification to use when encoding `data`. Valid values are:
->> `ascii85`, `z85` or `ipv6`. Default is `z85`.
+>> `ascii85`, `z85`, `z85pad` or `ipv6`. Default is `z85`.
 >>
 >> For `ipv6`, if `data` is a buffer, it is expected to be the binary representation
 >> of an IPv6 address (16 bytes). It **cannot** be a textual representation. If it is a string,
