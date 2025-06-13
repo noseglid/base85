@@ -1,6 +1,6 @@
 import type { Buffer } from 'buffer';
 
-declare type Base85Encoding = 'z85' | 'ascii85' | 'ipv6';
+declare type Base85Encoding = 'z85' | 'z85pad' | 'ascii85' | 'ipv6';
 
 export function encode(
   data: Buffer | string,
