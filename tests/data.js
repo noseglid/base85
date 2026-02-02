@@ -152,4 +152,10 @@ export const data = [
       btoa: bigBtoa,
     },
   },
+  {
+    raw: Buffer.from([6,27,178,0,0]),
+    enc: {
+      ascii85: '<~"rjiJ!!~>',
+    },
+  },
 ];
