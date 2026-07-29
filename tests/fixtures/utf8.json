@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "timestamp": "2026-03-04T08:55:21.123Z",
+    "environment": "production",
+    "checksum": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
+  },
+  "user": {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "username": "john_doe",
+    "email": "jan+testing@crazy.com",
+    "bio": "Žluťoučký kůň úpěl ďábelské ódy. Příliš žluťoučký kůň úpěl ďábelské ódy. 🚀🔥💾",
+    "roles": [ "admin", "developer", "auditor" ]
+  },
+  "data": {
+    "randomBase64": "VGhpcyBpcyBhbiBleGFtcGxlIGJhc2U2NCBzdHJpbmcgd2l0aCBzb21lIHJhbmRvbSBjb250ZW50Lg==",
+    "hexBlob": "deadbeefcafebabefeedface0123456789abcdef",
+    "numbers": [
+        0,   1,   2,  3,  5,   8,
+        13,  21,  34, 55, 89, 144,
+      233, 377, 610
+    ],
+    "matrix": [ [1,2], [3,4] ],
+    "longText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vulputate massa nec turpis cursus, non pulvinar purus viverra. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+  },
+  "symbols": "!@#$%^&*()_+-=[]{}|;:\\\"',./<>?`~",
+  "unicodeBlock": "漢字カタカナひらがな한국어русскийالعربيةעברית",
+  "repetition": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+}
