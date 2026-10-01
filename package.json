@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "buffer": "^6.0.3",
-    "ip-address": "^5.8.9"
+    "ip-address": "^10.7.1"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
@@ -20,7 +20,13 @@
     "type": "git",
     "url": "https://github.com/noseglid/base85"
   },
-  "keywords": ["base85", "ascii85", "encode", "decode", "binary-to-text"],
+  "keywords": [
+    "base85",
+    "ascii85",
+    "encode",
+    "decode",
+    "binary-to-text"
+  ],
   "author": "Alexander Olsson <noseglid@gmail.com>",
   "license": "MIT",
   "bugs": {
