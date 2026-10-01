@@ -10,17 +10,13 @@
     "username": "john_doe",
     "email": "jan+testing@crazy.com",
     "bio": "Žluťoučký kůň úpěl ďábelské ódy. Příliš žluťoučký kůň úpěl ďábelské ódy. 🚀🔥💾",
-    "roles": [ "admin", "developer", "auditor" ]
+    "roles": ["admin", "developer", "auditor"]
   },
   "data": {
     "randomBase64": "VGhpcyBpcyBhbiBleGFtcGxlIGJhc2U2NCBzdHJpbmcgd2l0aCBzb21lIHJhbmRvbSBjb250ZW50Lg==",
     "hexBlob": "deadbeefcafebabefeedface0123456789abcdef",
-    "numbers": [
-        0,   1,   2,  3,  5,   8,
-        13,  21,  34, 55, 89, 144,
-      233, 377, 610
-    ],
-    "matrix": [ [1,2], [3,4] ],
+    "numbers": [0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610],
+    "matrix": [[1, 2], [3, 4]],
     "longText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vulputate massa nec turpis cursus, non pulvinar purus viverra. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   "symbols": "!@#$%^&*()_+-=[]{}|;:\\\"',./<>?`~",

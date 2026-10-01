@@ -1,10 +1,10 @@
-import { describe, expect, it } from 'vitest';
 import fs from 'node:fs';
+import { describe, expect, it } from 'vitest';
+import alphabet from '../lib/alphabets';
 import base85 from '../lib/base85';
 import * as data from './data';
-import alphabet from '../lib/alphabets';
 
-const json = fs.readFileSync("tests/fixtures/utf8.json");
+const json = fs.readFileSync('tests/fixtures/utf8.json');
 
 describe('utf8 encoding', () => {
   it('encodes json', () => {

@@ -1,8 +1,6 @@
-'use strict';
-
+import fs from 'node:fs';
+import { describe, expect, it } from 'vitest';
 import base85 from '../lib/base85';
-import fs from 'fs';
-import { describe, it, expect } from 'vitest';
 
 describe('loremipsum', () => {
   it('encodes/decodes loremipsum using ascii85', () => {
@@ -14,7 +12,7 @@ describe('loremipsum', () => {
 
     expect(decoded).toEqual(raw);
     expect(encoded).toEqual(enc.toString('ascii'));
-  })
+  });
 
   it('encodes/decodes loremipsum using z85', () => {
     const raw = Buffer.from(fs.readFileSync('./tests/loremipsum.raw'));
@@ -24,6 +22,6 @@ describe('loremipsum', () => {
     const encoded = base85.encode(raw, 'z85');
 
     expect(decoded).toEqual(raw);
-    expect(encoded).toEqual(enc.toString('ascii'))
-  })
+    expect(encoded).toEqual(enc.toString('ascii'));
+  });
 });

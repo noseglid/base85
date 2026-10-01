@@ -1,5 +1,5 @@
-import base85 from '../lib/base85';
 import { describe, expect, it } from 'vitest';
+import base85 from '../lib/base85';
 
 describe('ipv6', () => {
   it.each([

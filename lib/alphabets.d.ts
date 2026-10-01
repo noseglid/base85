@@ -1,9 +1,9 @@
 declare type Alphabet = {
   [key: number]: string;
-}
+};
 declare type Tebahpla = {
   [key: string]: number;
-}
+};
 
 export namespace a85 {
   const enc: Alphabet;
