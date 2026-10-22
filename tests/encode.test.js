@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import alphabet from '../lib/alphabets';
 import base85 from '../lib/base85';
 import * as data from './data';
-import alphabet from '../lib/alphabets';
 
 describe('encode', () => {
   it('errors on invalid buffers', () => {
