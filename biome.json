@@ -30,17 +30,5 @@
     "formatter": {
       "quoteStyle": "single"
     }
-  },
-  "overrides": [
-    {
-      "includes": ["**/*.d.ts"],
-      "linter": {
-        "rules": {
-          "correctness": {
-            "noUnusedVariables": "off"
-          }
-        }
-      }
-    }
-  ]
+  }
 }

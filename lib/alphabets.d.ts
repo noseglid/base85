@@ -1,31 +1,19 @@
-declare type Alphabet = {
-  [key: number]: string;
-};
-declare type Tebahpla = {
-  [key: string]: number;
-};
-
-export namespace a85 {
-  const enc: Alphabet;
-  const dec: Tebahpla;
+export interface Codec {
+  /** All characters of the alphabet, in encoding order */
+  chars: string;
+  /** Value -> character */
+  enc: readonly string[];
+  /** Character code -> value */
+  dec: Readonly<Record<number, number>>;
 }
 
-export namespace ascii85 {
-  const enc: Alphabet;
-  const dec: Tebahpla;
-}
+declare const alphabets: Readonly<{
+  ascii85: Codec;
+  a85: Codec;
+  btoa: Codec;
+  z85: Codec;
+  z85pad: Codec;
+  ipv6: Codec;
+}>;
 
-export namespace z85 {
-  const enc: Alphabet;
-  const dec: Tebahpla;
-}
-
-export namespace z85pad {
-  const enc: Alphabet;
-  const dec: Tebahpla;
-}
-
-export namespace ipv6 {
-  const enc: Alphabet;
-  const dec: Tebahpla;
-}
+export default alphabets;
