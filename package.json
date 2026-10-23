@@ -9,11 +9,10 @@
   },
   "dependencies": {
     "buffer": "^6.0.3",
-    "ip-address": "^5.8.9"
+    "ip-address": "^10.7.4"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/ip-address": "^6.0.0",
     "vitest": "^3.0.9"
   },
   "repository": {
@@ -28,6 +27,6 @@
   },
   "homepage": "https://github.com/noseglid/base85",
   "engines": {
-    "node": ">=10.24.1"
+    "node": ">=16.9.0"
   }
 }
