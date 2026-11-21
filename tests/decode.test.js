@@ -17,6 +17,18 @@ describe('decode', () => {
     expect(base85.decode('as\nfg')).toBe(false);
   });
 
+  it('errors on characters outside the alphabet', () => {
+    // '"' and '`' are not z85 characters
+    expect(base85.decode('HelloWorl"', 'z85')).toBe(false);
+    expect(base85.decode('Hello`orld', 'z85')).toBe(false);
+    // '{' and 'ÿ' are not ascii85 characters
+    expect(base85.decode('<~87c{URD]~>', 'ascii85')).toBe(false);
+    expect(base85.decode('<~87cU\u00ffRD]~>', 'ascii85')).toBe(false);
+    expect(
+      base85.decode(Buffer.from([0x30, 0x30, 0x30, 0x30, 0x80]), 'z85'),
+    ).toBe(false);
+  });
+
   it.each(
     Object.keys(alphabet).flatMap((encoding) => {
       return data.data
