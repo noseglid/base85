@@ -34,3 +34,36 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx biome ci .
+
+  package:
+    # Install the packed tarball into a clean project and load it the way
+    # consumers do. Vitest transpiles lib/, so the unit tests cannot catch
+    # a broken module format.
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22, 24, 26]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm pack --pack-destination "$RUNNER_TEMP"
+      - name: Install tarball and load it
+        working-directory: ${{ runner.temp }}
+        run: |
+          mkdir consumer && cd consumer
+          npm init -y > /dev/null
+          npm install --no-audit --no-fund ../base85-*.tgz
+          node -e '
+            const b = require("base85");
+            const e = b.encode("hell");
+            if (e !== "xK#0@" || b.decode(e).toString() !== "hell") process.exit(1);
+            console.log("require ok");
+          '
+          node --input-type=module -e '
+            import b, { encode } from "base85";
+            if (b.encode("hell") !== "xK#0@" || encode("hell") !== "xK#0@") process.exit(1);
+            console.log("import ok");
+          '

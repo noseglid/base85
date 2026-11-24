@@ -1,19 +1,21 @@
-export interface Codec {
-  /** All characters of the alphabet, in encoding order */
-  chars: string;
-  /** Value -> character */
-  enc: readonly string[];
-  /** Character code -> value */
-  dec: Readonly<Record<number, number>>;
+declare namespace alphabets {
+  interface Codec {
+    /** All characters of the alphabet, in encoding order */
+    chars: string;
+    /** Value -> character */
+    enc: readonly string[];
+    /** Character code -> value */
+    dec: Readonly<Record<number, number>>;
+  }
 }
 
 declare const alphabets: Readonly<{
-  ascii85: Codec;
-  a85: Codec;
-  btoa: Codec;
-  z85: Codec;
-  z85pad: Codec;
-  ipv6: Codec;
+  ascii85: alphabets.Codec;
+  a85: alphabets.Codec;
+  btoa: alphabets.Codec;
+  z85: alphabets.Codec;
+  z85pad: alphabets.Codec;
+  ipv6: alphabets.Codec;
 }>;
 
-export default alphabets;
+export = alphabets;
