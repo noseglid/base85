@@ -1,6 +1,6 @@
 {
   "name": "base85",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "Base85 (Ascii85) encode and decode functionality",
   "main": "lib/base85.js",
   "typings": "lib/base85.d.ts",
@@ -34,5 +34,8 @@
   "homepage": "https://github.com/noseglid/base85",
   "engines": {
     "node": ">=16.9.0"
-  }
+  },
+  "files": [
+    "lib"
+  ]
 }
