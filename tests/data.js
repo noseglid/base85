@@ -123,7 +123,15 @@ export const data = [
     enc: {
       btoa: '00000',
       ascii85: '<~z~>',
+      a85: 'z',
       z85: '00000',
+    },
+  },
+  {
+    raw: Buffer.from([0x0, 0x0, 0x0, 0x0, 0x61, 0x62]),
+    enc: {
+      ascii85: '<~z@:B~>',
+      a85: 'z@:B',
     },
   },
   {
